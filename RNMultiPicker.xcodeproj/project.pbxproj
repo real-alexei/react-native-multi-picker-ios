@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		13BE3DEE1AC21097009241FE /* RNMultiPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 13BE3DED1AC21097009241FE /* RNMultiPicker.m */; };
+		13BE3DEE1AC21097009241FE /* RNMultiPickerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 13BE3DED1AC21097009241FE /* RNMultiPickerManager.m */; };
+		55C4AE9C21FFBBE100E29CB5 /* RNMultiPickerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C4AE9B21FFBBE100E29CB5 /* RNMultiPickerManager.swift */; };
+		55C4AE9E21FFBC0C00E29CB5 /* RNMultiPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C4AE9D21FFBC0C00E29CB5 /* RNMultiPicker.swift */; };
+		55C4AEA021FFBC3700E29CB5 /* UIMultiPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C4AE9F21FFBC3700E29CB5 /* UIMultiPicker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -24,8 +27,11 @@
 
 /* Begin PBXFileReference section */
 		134814201AA4EA6300B7C361 /* libRNMultiPicker.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNMultiPicker.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		13BE3DEC1AC21097009241FE /* RNMultiPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNMultiPicker.h; sourceTree = "<group>"; };
-		13BE3DED1AC21097009241FE /* RNMultiPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNMultiPicker.m; sourceTree = "<group>"; };
+		13BE3DED1AC21097009241FE /* RNMultiPickerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNMultiPickerManager.m; sourceTree = "<group>"; };
+		55C4AE9A21FFBBE000E29CB5 /* RNMultiPicker-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RNMultiPicker-Bridging-Header.h"; sourceTree = "<group>"; };
+		55C4AE9B21FFBBE100E29CB5 /* RNMultiPickerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RNMultiPickerManager.swift; sourceTree = "<group>"; };
+		55C4AE9D21FFBC0C00E29CB5 /* RNMultiPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RNMultiPicker.swift; sourceTree = "<group>"; };
+		55C4AE9F21FFBC3700E29CB5 /* UIMultiPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIMultiPicker.swift; path = UIMultiPicker/Classes/UIMultiPicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,8 +56,11 @@
 		58B511D21A9E6C8500147676 = {
 			isa = PBXGroup;
 			children = (
-				13BE3DEC1AC21097009241FE /* RNMultiPicker.h */,
-				13BE3DED1AC21097009241FE /* RNMultiPicker.m */,
+				55C4AE9F21FFBC3700E29CB5 /* UIMultiPicker.swift */,
+				55C4AE9D21FFBC0C00E29CB5 /* RNMultiPicker.swift */,
+				55C4AE9B21FFBBE100E29CB5 /* RNMultiPickerManager.swift */,
+				13BE3DED1AC21097009241FE /* RNMultiPickerManager.m */,
+				55C4AE9A21FFBBE000E29CB5 /* RNMultiPicker-Bridging-Header.h */,
 				134814211AA4EA7D00B7C361 /* Products */,
 			);
 			indentWidth = 2;
@@ -90,6 +99,7 @@
 				TargetAttributes = {
 					58B511DA1A9E6C8500147676 = {
 						CreatedOnToolsVersion = 6.1.1;
+						LastSwiftMigration = 1010;
 					};
 				};
 			};
@@ -115,7 +125,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				13BE3DEE1AC21097009241FE /* RNMultiPicker.m in Sources */,
+				55C4AE9E21FFBC0C00E29CB5 /* RNMultiPicker.swift in Sources */,
+				55C4AEA021FFBC3700E29CB5 /* UIMultiPicker.swift in Sources */,
+				13BE3DEE1AC21097009241FE /* RNMultiPickerManager.m in Sources */,
+				55C4AE9C21FFBBE100E29CB5 /* RNMultiPickerManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -222,31 +235,40 @@
 		58B511F01A9E6C8500147676 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/../../React/**",
 					"$(SRCROOT)/../../node_modules/react-native/React/**",
 				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = RNMultiPicker;
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "RNMultiPicker-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
 		58B511F11A9E6C8500147676 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/../../React/**",
 				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = RNMultiPicker;
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "RNMultiPicker-Bridging-Header.h";
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};

@@ -1,5 +1,13 @@
 {
-  "name": "RNMultiPicker",
-  "version": "0.0.1",
-  "keywords": "react-native"
+  "name": "react-native-multi-picker-ios",
+  "version": "0.1.0",
+  "main": "MultiPicker.js",
+  "peerDependencies": {
+    "react-native": "^0.41.2"
+  },
+  "author": {
+    "name": "Alexei Selivanov",
+    "email": "alexei@slowmotion.io"
+  },
+  "license": "MIT"
 }

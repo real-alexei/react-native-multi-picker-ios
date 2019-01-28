@@ -1,9 +1,61 @@
-const NativeRNMultiPicker = require('NativeModules').RNMultiPicker;
+import React from 'react'
+import {
+    requireNativeComponent,
+    StyleSheet
+} from 'react-native'
 
-const RNMultiPicker = {
-  test: function() {
-    NativeRNMultiPicker.test();
-  },
-};
+let RNMultiPicker = requireNativeComponent('RNMultiPicker')
 
-module.exports = RNMultiPicker;
+export default class MultiPickerIOS extends React.Component 
+{
+    state = {
+        selectedIndexes: [],
+        items: []
+    }    
+
+    static getDerivedStateFromProps(props) {
+        let selectedIndexes = []
+        let items = []
+
+        let selectedValues = props.selectedValues || []
+        React.Children.toArray(props.children).forEach(function(child, index) {
+            if (selectedValues.indexOf(child.props.value) >= 0) {
+                selectedIndexes.push(index);
+            }
+            items.push({
+                label: child.props.label,
+                value: child.props.value
+            })
+        });
+
+        return { items, selectedIndexes };
+    }
+
+    render() {
+        return (
+            <RNMultiPicker
+                style={[styles.picker, this.props.style]}
+                options={this.state.items.map(item => item.label)}
+                selectedIndexes={this.state.selectedIndexes}
+                onChange={this._onChange}
+                onStartShouldSetResponder={() => true}
+                onResponderTerminationRequest={() => false}
+            /> 
+        )
+    }
+
+    _onChange = (event) => {
+        if (this.props.onChange) {
+            this.props.onChange({
+                selectedValues: event.nativeEvent.selectedIndexes.map(at => this.state.items[at].value)
+            })
+        }
+    }
+}
+
+const styles = StyleSheet.create({
+    picker: {
+        flex: 1,
+        alignSelf: 'stretch'
+    }
+})
