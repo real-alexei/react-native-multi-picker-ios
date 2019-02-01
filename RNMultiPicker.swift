@@ -1,5 +1,7 @@
 import Foundation
 import UIKit
+import React
+import UIMultiPicker
 
 @objc(RNMultiPicker)
 class RNMultiPicker : UIMultiPicker {
