@@ -8,6 +8,8 @@ let RNMultiPicker = requireNativeComponent('RNMultiPicker')
 
 export default class MultiPickerIOS extends React.Component 
 {
+    _picker = null
+
     state = {
         selectedIndexes: [],
         items: []
@@ -34,6 +36,7 @@ export default class MultiPickerIOS extends React.Component
     render() {
         return (
             <RNMultiPicker
+                ref={picker => this._picker = picker}
                 style={[styles.picker, this.props.style]}
                 tintColor={this.props.tintColor}
                 options={this.state.items.map(item => item.label)}
@@ -50,6 +53,12 @@ export default class MultiPickerIOS extends React.Component
             this.props.onChange({
                 selectedValues: event.nativeEvent.selectedIndexes.map(at => this.state.items[at].value)
             })
+        }
+
+        if (this._picker) {
+            this._picker.setNativeProps({
+                selectedIndexes: this.state.selectedIndexes,
+            });
         }
     }
 }
