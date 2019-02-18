@@ -63,15 +63,17 @@ AppRegistry.registerComponent('App', () => App)
 
 ## Installation
 
+⚠️ This library relies on CocoaPods for proper dependency management,
+since it pulls native Swift library [UIMultiPicker](https://github.com/aselivanov/UIMultiPicker).
+
+First:
 ```shell
 npm install --save react-native-multi-picker-ios
-react-native link
 ```
 
-⚠️ If your React Native Xcode project is an Objective-C project 
-(which is the case by default) 
-you have to add Swift support explicitly using one of the following methods:
+Then add the following to your `ios/Podfile`:
+```ruby
+pod 'RNMultiPicker', :path => '../node_modules/react-native-multi-picker-ios'
+```
 
-1. In Xcode add dummy Swift file (e.g. `Dummy.swift`) into your project. No need to generate _Bridging Header_. This fixes Xcode project configuration implicitly.
-2. Add `$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)` to **Library Search Paths** of the project's main Target:
-   ![Xcode project settings](https://raw.github.com/aselivanov/UIMultiPickerDemo/master/media/objc-swift.png)
+Finally run `pod install`.
