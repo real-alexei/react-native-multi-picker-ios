@@ -9,6 +9,7 @@ RCT_EXPORT_VIEW_PROPERTY(options, NSArray<NSString>)
 RCT_EXPORT_VIEW_PROPERTY(selectedIndexes, NSNumberArray)
 RCT_EXPORT_VIEW_PROPERTY(onChange, RCTBubblingEventBlock)
 
+RCT_EXPORT_VIEW_PROPERTY(tintColor, UIColor)
 RCT_EXPORT_VIEW_PROPERTY(color, UIColor)
 RCT_EXPORT_VIEW_PROPERTY(textAlign, NSTextAlignment)
 RCT_CUSTOM_VIEW_PROPERTY(fontSize, NSNumber, RNMultiPicker)

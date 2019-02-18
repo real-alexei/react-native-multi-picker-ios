@@ -35,6 +35,7 @@ export default class MultiPickerIOS extends React.Component
         return (
             <RNMultiPicker
                 style={[styles.picker, this.props.style]}
+                tintColor={this.props.tintColor}
                 options={this.state.items.map(item => item.label)}
                 selectedIndexes={this.state.selectedIndexes}
                 onChange={this._onChange}

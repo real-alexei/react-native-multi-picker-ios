@@ -11,7 +11,7 @@ Pod::Spec.new do |s|
   s.author       = { "author" => "alexei@slowmotion.io" }
   s.platform     = :ios, "7.0"
   s.source       = { :git => "https://github.com/aselivanov/react-native-multi-picker-ios.git", :tag => "cocoapods" }
-  s.source_files  = "*.{m,swift}"
+  s.source_files  = "*.{h,m,swift}"
   s.requires_arc = true
 
   s.dependency "React"
