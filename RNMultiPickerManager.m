@@ -29,4 +29,10 @@ RCT_CUSTOM_VIEW_PROPERTY(fontFamily, NSString, RNMultiPicker)
   view.font = [RCTFont updateFont:view.font withFamily:json ?: defaultView.font.familyName];
 }
 
+RCT_EXTERN_METHOD(
+  highlight: (nonnull NSNumber *)node
+  at:(nonnull NSNumber *)at
+  animated:(BOOL)animated
+)
+
 @end
