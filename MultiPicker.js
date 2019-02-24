@@ -11,11 +11,19 @@ export default class MultiPicker extends React.Component
 {
     static Item  = Item
 
-    render() {
-        if (Platform.OS === 'ios') {
-            return <MultiPickerIOS {...this.props}>{this.props.children}</MultiPickerIOS>;
-        } else {
-            return <UnimplementedView />;
-        }
-    }
+    picker = null
+
+    render = () => 
+        Platform.OS === 'ios' ?
+            <MultiPickerIOS  
+                {...this.props}
+                ref={(picker) => {
+                    this.picker = picker
+                }}
+            >
+                {this.props.children}
+            </MultiPickerIOS> :
+            <UnimplementedView />
+        
+    highlight = (at, animated = true) => this.picker.highlight(at, animated)
 }

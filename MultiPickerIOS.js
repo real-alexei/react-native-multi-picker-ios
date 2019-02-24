@@ -1,7 +1,9 @@
 import React from 'react'
 import {
+    findNodeHandle,
     requireNativeComponent,
-    StyleSheet
+    StyleSheet,
+    UIManager
 } from 'react-native'
 
 let RNMultiPicker = requireNativeComponent('RNMultiPicker')
@@ -33,22 +35,27 @@ export default class MultiPickerIOS extends React.Component
         return { items, selectedIndexes };
     }
 
-    render() {
-        return (
-            <RNMultiPicker
-                ref={picker => this._picker = picker}
-                style={[styles.picker, this.props.style]}
-                tintColor={this.props.tintColor}
-                options={this.state.items.map(item => item.label)}
-                selectedIndexes={this.state.selectedIndexes}
-                onChange={this._onChange}
-                onStartShouldSetResponder={() => true}
-                onResponderTerminationRequest={() => false}
-            /> 
+    highlight = (at, animated = true) => {
+        UIManager.dispatchViewManagerCommand(
+            findNodeHandle(this._picker),
+            UIManager.RNMultiPicker.Commands.highlight,
+            [at, animated],
         )
     }
 
-    _onChange = (event) => {
+    render = () => 
+        <RNMultiPicker
+            ref={picker => this._picker = picker}
+            style={[styles.picker, this.props.style]}
+            tintColor={this.props.tintColor}
+            options={this.state.items.map(item => item.label)}
+            selectedIndexes={this.state.selectedIndexes}
+            onChange={this._onChange}
+            onStartShouldSetResponder={() => true}
+            onResponderTerminationRequest={() => false}
+        /> 
+
+    _onChange = (event) => { 
         if (this.props.onChange) {
             this.props.onChange({
                 selectedValues: event.nativeEvent.selectedIndexes.map(at => this.state.items[at].value)
