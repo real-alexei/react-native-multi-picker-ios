@@ -38,7 +38,7 @@ export default class MultiPickerIOS extends React.Component
     highlight = (at, animated = true) => {
         UIManager.dispatchViewManagerCommand(
             findNodeHandle(this._picker),
-            UIManager.RNMultiPicker.Commands.highlight,
+            UIManager.getViewManagerConfig('RNMultiPicker').Commands.highlight,
             [at, animated],
         )
     }
