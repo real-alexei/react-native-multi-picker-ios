@@ -46,7 +46,7 @@ export default class MultiPicker extends React.Component
                         {...this.props}
                         style={[{...fontStyle, marginTop: this.offset, marginBottom: this.offset}]}
                         ref={(picker) => {
-                            this.picker = picker
+                            this.picker = picker && picker._component
                         }}
                     >
                         {this.props.children}
