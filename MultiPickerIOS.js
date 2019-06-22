@@ -46,6 +46,7 @@ export default class MultiPickerIOS extends React.Component
     render = () =>
         <RNMultiPicker
             ref={picker => this._picker = picker}
+            rowHeight={this.props.rowHeight}
             style={[styles.picker, this.props.style]}
             color={this.props.color}
             tintColor={this.props.tintColor}
