@@ -18,7 +18,7 @@ export default class MultiPicker extends React.Component
             <MultiPickerIOS
                 {...this.props}
                 ref={(picker) => {
-                    this.picker = picker && picker._component
+                    this.picker = picker
                 }}
             >
                 {this.props.children}
